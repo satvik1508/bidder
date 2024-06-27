@@ -11,9 +11,15 @@ const Login = () => {
     
     try {
       const response = await axios.post('http://localhost:3000/api/v1/login',{email,password})
+      // const token = response.data;
+      localStorage.setItem('token',response.data.token)
       if(response.status === 200){
         console.log('User Logged In Successfully')
+        if(response.data.role === 'admin'){
         window.location.href = '/profile'
+        }else{
+          window.location.href = '/Userdash'
+        }
       }
     } catch (error) {
       console.error('User Login Failed',error.response.data)

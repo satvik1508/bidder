@@ -4,11 +4,15 @@ const app = express();
 const cors = require('cors');
 const connectDB = require('./db/connect');
 const routes = require('./routes/userRoute');
+const itemRoute = require('./routes/itemRoute');
 
 app.use(cors());
 app.use(express.json());
 
+app.use('/uploads', express.static('uploads'));
+
 app.use('/api/v1',routes)
+app.use('/api/v1', itemRoute)
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
