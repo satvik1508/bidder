@@ -39,7 +39,9 @@ const Register = () => {
   return (
     <div className='flex items-center justify-center min-h-screen bg-gray-100'>
       <form onSubmit={handleSubmit}>
-        
+      <div>
+        <h1 className='text-2xl font-bold mb-7'>Auction Ace Register</h1>
+      </div>
         <div>
           <label className='block text-gray-700'>Username</label>
           <input name="username" type="text" value={userData.username} onChange={handleChange} 

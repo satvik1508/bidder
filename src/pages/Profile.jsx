@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import io from 'socket.io-client'
 
 const Profile = () => {
   const [inputs, setInputs] = useState({
@@ -10,6 +11,16 @@ const Profile = () => {
   })
 
   const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    const socket = io('http://localhost:3000');
+
+    socket.on('newBid' , (data) => {
+      alert(`New bid placed on item ${data.productName}: ₹${data.bidAmount}`)
+    })
+
+
+  },[])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,11 +56,24 @@ const handleSubmit = async (e) => {
   }
 }
 
+const logout = () => {
+  localStorage.removeItem('token');
+  window.location.href = '/';
+}
+
   return (
     <div className='flex items-center justify-center min-h-screen bg-gray-100'>
     
     <form onSubmit={handleSubmit}>
-    <h1 className='text-2xl font-bold mb-7'>Admin Dashboard</h1>
+    <div className='flex justify-between items-center mb-7'>
+      <h1 className='text-2xl font-bold mb-7'>Admin Dashboard</h1>
+
+      <button onClick={logout} className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-40'>
+        Logout
+      </button>
+      
+    </div>
+
     <div>
       <label className='block text-gray-700'>Product Name</label>
         <input type='text' name='productName' placeholder='Product' value={inputs.productName} onChange={handleChange}
@@ -74,7 +98,7 @@ const handleSubmit = async (e) => {
         className='w-full px-4 py-2 mt-2 text-base text-gray-700 placeholder-gray-600 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:shadow-outline focus:border-blue-300 sm:text-sm sm:leading-5'/>
     </div>
 
-    <div>
+        <div>
           <label className='block text-gray-700'>Upload Image</label>
           <input
             type='file'

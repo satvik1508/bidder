@@ -32,6 +32,12 @@ const itemSchema = new mongoose.Schema({
         required: [true,'Please provide an image'],
     },
 
+    currentBidder:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    
+
     // endTime:{
     //     type: Date,
     //     required: [true,'Please provide an end time'],

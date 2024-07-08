@@ -29,6 +29,10 @@ const Login = () => {
   return (
     <div className='flex items-center justify-center min-h-screen bg-gray-100'>
     <form onSubmit={handleSubmit}>
+    <div>
+      <h1 className='text-2xl font-bold mb-7'>Auction Ace Login</h1>
+    </div>
+
         <div>
             <label className='block text-gray-700'>Email</label>
             <input name="email" type="email" value={email} onChange={e => setEmail(e.target.value)} 
@@ -42,16 +46,6 @@ const Login = () => {
                 className='w-full px-4 py-2 mt-2 text-base text-gray-700 placeholder-gray-600 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:shadow-outline focus:border-blue-300 sm:text-sm sm:leading-5'
             />
         </div>
-
-        {/* <div>
-        <label className='mt-2 block text-gray-700'>Select a Role:</label>
-        <select id="role" name="role" value={role} onChange={e => setRole(e.target.value)}
-        className="w-full px-4 py-2 mt-2 text-base text-gray-700 placeholder-gray-600 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:shadow-outline focus:border-blue-300 sm:text-sm sm:leading-5">
-            <option value="" disabled >Choose</option>
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
-        </select>
-        </div> */}
 
         <button type="submit" 
         className='w-full px-4 py-2 mt-4 text-base font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:shadow-outline'
