@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 const port = 3000;
 
 io.on('connection' , (socket) => {
-    console.log('NEw connection');
+    console.log('NEW connection');
 
     socket.on('disconnect', () => {
         console.log('User disconnected')

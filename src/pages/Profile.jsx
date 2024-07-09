@@ -47,7 +47,7 @@ const handleSubmit = async (e) => {
     const token = localStorage.getItem('token'); // Retrieve the token from local storage
       const response = await axios.post('http://localhost:3000/api/v1/items', formData,{
         headers: {
-          'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+          'Authorization': `Bearer ${token}` 
         }
       });
       console.log(response);

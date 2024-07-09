@@ -64,7 +64,7 @@ const Userdash = () => {
         bidAmount: bidAmount[itemId]
       })
       } catch (error) {
-      console.error('Error placing bid', error.response ? error.response.data : error.message);
+      console.error('Error placing bid', error.message);
     }
   };
 
